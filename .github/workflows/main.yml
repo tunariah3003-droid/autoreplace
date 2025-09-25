@@ -15,14 +15,17 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Setup Gradle
+      - name: Install Gradle
         uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: 8.7
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: gradle build
 
       - name: Upload jar
         uses: actions/upload-artifact@v4
         with:
           name: AutoRodSwitch
           path: build/libs/*.jar
+
